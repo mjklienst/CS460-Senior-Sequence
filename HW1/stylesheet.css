@@ -1,34 +1,43 @@
-h1 
+/*Styling info for the following tags*/
+html, body, h1, h2, h3, h4, h5, h6 
 {
-    color: darkslategrey
+  font-family: "Comic Sans MS";
 }
 
+/*Font coloring for h1 tags*/
+h1 
+{
+    color: darkslategrey;
+}
+
+/*Background color of webpage*/
 body {
     background-color: navajowhite;
 }
 
+/*Nav bar background color*/
 .nav {
   background-color: chocolate;
 }
 
-/* Style the links inside the navigation bar */
+/*Nav bar font && placement info*/
 .nav a {
   float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
+  color: white;
+  font-family: "Comic Sans MS";
+  font-size: 20px;
+  padding: 15px 40px;
   text-decoration: none;
-  font-size: 17px;
 }
 
-/* Change the color of links on hover */
+/*Hover link coloring*/
 .nav a:hover {
-  background-color: #ddd;
+  background-color: white;
   color: black;
 }
 
-/* Add a color to the active/current link */
+/*Active link coloring*/
 .nav a.active {
-  background-color: #4CAF50;
+  background-color: brown;
   color: white;
 }
