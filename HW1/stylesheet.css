@@ -9,6 +9,13 @@ h1
 {
     color: darkslategrey;
     text-align: center;
+    border-style: dotted;
+}
+
+/*Hover coloring for h1 tags*/
+h1:hover {
+  background-color: white;
+  color: black;
 }
 
 /*Background color of webpage*/
@@ -43,11 +50,13 @@ body {
   color: white;
 }
 
+/*Background color for table*/
 .table {
   background-color: white;
 }
 
-.table td:hover {
+/*Hovering color for table*/
+.table th, td:hover {
   background-color:brown;
   color: white;
   }
