@@ -3,77 +3,42 @@
     <head>
             <title>Coffee Cottage</title>
             <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="hw2.js"></script>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-            <link rel="stylesheet" type="text/css" href="styles.css"
+            <link rel="stylesheet" type="text/css" href="styles.css">
+            <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     </head>
     <body>
-                <h1>Coffee Cottage</h1>
-                <table class="table table-sm">
-                        <br/> <br/> 
-                        <thead>
-                          <tr>
-                            <th scope="col"></th>
-                            <th scope="col">Coffee</th>
-                            <th scope="col">Caffeine Content</th>
-                            <th scope="col">Amount</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row"></th>
-                            <td>French Press</td>
-                            <td>107.5 Milligrams</td>
-                            <td>8 Ounces</td>
-                          </tr>
-                          <tr>
-                            <th scope="row"></th>
-                            <td>Espresso Machine</td>
-                            <td>80 Milligrams</td>
-                            <td>2 Ounces</td>
-                          </tr>
-                          <tr>
-                            <th scope="row"></th>
-                            <td>Drip Coffee</td>
-                            <td>120 Milligrams</td>
-                            <td>12 Ounces</td>
-                          </tr>
-                          <tr>
-                            <th scope="row"></th>
-                            <td>Instant Coffee</td>
-                            <td>47 Milligrams</td>
-                            <td>6 Ounces</td>
-                              </tr>
-                        </tbody>
-                      </table>
+                <h1>Coffee Quiz</h1>
+                <div class="text-center">
 
-                      <div class="container">
-                            <div class="row">
-                              <div class="col-sm-3">
-                                <h3>French Press</h3>
-                                <img src="french.jpg" alt="French Pic" width="128" height="128">
-                                <p>If you let it sit for a long time, you'll have a good, strong cup of coffee. </p>
-                              </div>
-                              <div class="col-sm-3">
-                                <h3>Espresso Machine</h3>
-                                <img src="espresso.jpg" alt="Espresso Pic" width="128" height="128">
-                                <p>For a strong pick-me-up, try an espresso shot. </p>
-                              </div>
-                              <div class="col-sm-3">
-                                <h3>Drip Coffee</h3>
-                                <img src="drip.jpg" alt="Drip Pic" width="128" height="128">
-                                <p>You can brew a pretty good cup of coffee with this type of coffee brewing method. </p>
-                              </div>
-                              <div class="col-sm-3">
-                                    <h3>Instant Coffee</h3>
-                                    <img src="instant.jpg" alt="Instant Pic" width="128" height="128">
-                                    <p>Personally, my least favorite type of coffee, but if you want something quick and have no other options, this is something. </p>
-                                </div>
-                            </div>
-                            </div>
-        
+                <p>Please answer all questions, and hit "Submit" to see a list of coffees based on uh idk </p> <br>
+                <p>Question 1: What is your age? </p>
+                <select name="age">
+                        <option value="select">Select Age</option>
+                        <option value="less12">Under 12 years old</option>
+                        <option value="over12">Over 12 years old</option>
+                      </select>
+
+                <p>Question 2: How is your day going so far? </p>
+                <form>
+                    <input type="radio" name="ans" value="a"> Fantastic! <br>
+                    <input type="radio" name="ans" value="b"> Pretty good. <br>
+                    <input type="radio" name="ans" value="c"> Not the best, could be better. <br>
+                    <input type="radio" name="ans" value="d"> Horrible... <br>
+                  </form> <br>
+                  
+                    <button id="MyButton">Submit</button>
+
+                </div>
+
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
     </body>
 
 </html>
