@@ -1,0 +1,24 @@
+/*Styling info for the following tags*/
+html, body, h1, h2, h3, h4, h5, h6 
+{
+  font-family: "Comic Sans MS";
+}
+
+/*Font coloring for h1 tags*/
+h1 
+{
+    color: darkslategrey;
+    text-align: center;
+    border-style: dotted;
+}
+
+/*Hover coloring for h1 tags*/
+h1:hover {
+  background-color: white;
+  color: black;
+}
+
+/*Background color of webpage*/
+body {
+    background-color: navajowhite;
+}
