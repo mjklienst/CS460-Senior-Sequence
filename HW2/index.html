@@ -15,25 +15,26 @@
                 <h1>Coffee Quiz</h1>
                 <div class="text-center">
 
-                <p>Please answer all questions, and hit "Submit" to see a list of coffees based on uh idk </p> <br>
+                <p>Please answer all questions, and hit "Submit" to see a list of recommended drinks for you. </p> <br>
                 <p>Question 1: What is your age? </p>
-                <select name="age">
+                <select id="age">
                         <option value="select">Select Age</option>
                         <option value="less12">Under 12 years old</option>
                         <option value="over12">Over 12 years old</option>
                       </select>
 
-                <p>Question 2: How is your day going so far? </p>
+                <p>Question 2: Which coffee drink do you prefer? </p>
                 <form>
-                    <input type="radio" name="ans" value="a"> Fantastic! <br>
-                    <input type="radio" name="ans" value="b"> Pretty good. <br>
-                    <input type="radio" name="ans" value="c"> Not the best, could be better. <br>
-                    <input type="radio" name="ans" value="d"> Horrible... <br>
+                    <input type="radio" name="ans" value="a"> Mocha <br>
+                    <input type="radio" name="ans" value="b"> Latte <br>
+                    <input type="radio" name="ans" value="c"> Frappuccino <br>
+                    <input type="radio" name="ans" value="d"> Black Coffee <br>
                   </form> <br>
                   
-                    <button id="MyButton">Submit</button>
-
+                    <button id="MyButton">Submit</button> <br>
                 </div>
+                <p> Your Recommended Beverages Are:  </p> <br>
+                <p id="result"> Select From Above To See Results. </p> <br>
 
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
