@@ -24,8 +24,8 @@ namespace HomeworkThree
         static void Main(string[] args)
         {
             int c = 72;                     // Column length to wrap to
-            String inputFilename;
-            String outputFilename = "output.txt";
+            string inputFilename = null;
+            string outputFilename = "output.txt";
             string scanner = null;
 
 
@@ -62,7 +62,6 @@ namespace HomeworkThree
             string[] wordString = scanner.Split(' ');
             foreach (string word in wordString)
             {
-                Console.WriteLine(word);
                 words.Push(word);
             }
 
@@ -88,14 +87,16 @@ namespace HomeworkThree
         */
         private static int wrapSimply(IQueueInterface<String> words, int columnLength, String outputFilename)
         {
-            System.IO.TextWriter writeFile = null;
+            //System.IO.TextWriter writeFile = null;
+            StreamWriter sr = null;
             //TextWriter writer;
             try
             {
                 //TextWriter writer = File.CreateText(outputFilename)
-                writeFile = new StreamWriter(outputFilename);
-               // writeFile.Flush();
-               // writeFile.Close();
+                //writeFile = new StreamWriter(outputFilename);
+                sr = new StreamWriter(outputFilename);
+                // writeFile.Flush();
+                // writeFile.Close();
                 //writeFile = null;
             }
             catch (FileNotFoundException e)
@@ -113,29 +114,29 @@ namespace HomeworkThree
                 // See if we need to wrap to the next line
                 if (col == 1)
                 {
-                    writeFile.WriteLine(str);
+                    sr.WriteLine(str);
                     col += len;
                     words.Pop();
                 }
                 else if ((col + len) >= columnLength)
                 {
 				// go to the next line
-				writeFile.WriteLine(Environment.NewLine);
+				sr.WriteLine(Environment.NewLine);
                     spacesRemaining += (columnLength - col) + 1;
                     col = 1;
                 }
                 else
                 {	// Typical case of printing the next word on the same line
-				writeFile.WriteLine(" ");
-				writeFile.WriteLine(str);
+				sr.WriteLine(" ");
+				sr.WriteLine(str);
                     col += (len + 1);
                     words.Pop();
                 }
 
             }
-		writeFile.WriteLine(Environment.NewLine);
-		writeFile.Flush();
-		writeFile.Close();
+		sr.WriteLine(Environment.NewLine);
+		sr.Flush();
+		sr.Close();
             return spacesRemaining;
         } // end wrapSimply
     }
