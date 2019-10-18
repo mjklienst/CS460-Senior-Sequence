@@ -5,7 +5,7 @@ namespace HomeworkThree
     /**
      * A FIFO queue interface.
      */
-    public interface QueueInterface<T>
+    public interface IQueueInterface<T>
     {
         /**
          * Add an element to the rear of the queue
