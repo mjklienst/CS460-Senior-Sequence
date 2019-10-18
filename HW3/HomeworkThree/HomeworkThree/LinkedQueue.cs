@@ -12,9 +12,8 @@ namespace HomeworkThree
 
     public class LinkedQueue<T> : IQueueInterface<T>
 {
-
     private Node<T> front;
-private Node<T> rear;
+    private Node<T> rear;
 
 public LinkedQueue()
 {
@@ -22,14 +21,14 @@ public LinkedQueue()
     rear = null;
 }
 
-public T push(T element)
+public T Push(T element)
 {
     if (element == null)
     {
-        throw new NullPointerException();
+        throw new NullReferenceException();
     }
 
-    if (isEmpty())
+    if (IsEmpty())
     {
         Node<T> tmp = new Node<T>(element, null);
         rear = front = tmp;
@@ -38,45 +37,45 @@ public T push(T element)
     {
         // General case
         Node<T> tmp = new Node<T>(element, null);
-        rear.next = tmp;
+        rear.Next = tmp;
         rear = tmp;
     }
     return element;
 }
 
-public T pop()
+public T Pop()
 {
-    T tmp = null;
-    if (isEmpty())
+    T tmp = default(T);
+    if (IsEmpty())
     {
         throw new QueueUnderflowException("The queue was empty when pop was invoked.");
     }
     else if (front == rear)
     {   // one item in queue
-        tmp = front.data;
+        tmp = front.Data;
         front = null;
         rear = null;
     }
     else
     {
         // General case
-        tmp = front.data;
-        front = front.next;
+        tmp = front.Data;
+        front = front.Next;
     }
 
     return tmp;
 }
 
-public T peek()
+public T Peek()
 {
-    if (isEmpty())
+    if (IsEmpty())
     {
         throw new QueueUnderflowException("The queue was empty when peek was invoked.");
     }
-    return front.data;
+    return front.Data;
 }
 
-public boolean isEmpty()
+public bool IsEmpty()
 {
     if (front == null && rear == null)
     {

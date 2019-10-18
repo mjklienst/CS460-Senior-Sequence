@@ -6,13 +6,13 @@ namespace HomeworkThree
 
     public class Node<T>
     {
-        public T data;
-        public Node<T> next;
+        public T Data;
+        public Node<T> Next;
 
-        public Node(T data, Node<T> next)
+        public Node(T Data, Node<T> Next)
         {
-            this.data = data;
-            this.next = next;
+            this.Data = Data;
+            this.Next = Next;
         }
     }
 

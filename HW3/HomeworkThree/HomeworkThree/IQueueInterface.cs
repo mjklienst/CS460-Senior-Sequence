@@ -12,28 +12,28 @@ namespace HomeworkThree
          * 
          * @return the element that was enqueued
          */
-        T push(T element);
+        T Push(T element);
 
         /**
          * Remove and return the front element.
          * 
          * @throws Thrown if the queue is empty
          */
-        T pop() throws QueueUnderflowException;
+        T Pop();
 
         /**
          * Return but don't remove the front element.
          * 
          * @throws Thrown if the queue is empty
          */
-        T peek() throws QueueUnderflowException;
+        T Peek();
 
         /**
          * Test if the queue is empty
          * 
          * @return true if the queue is empty; otherwise false
          */
-        boolean isEmpty();
+        bool IsEmpty();
     }
 
 }

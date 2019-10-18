@@ -10,14 +10,12 @@ namespace HomeworkThree
  */
 public class QueueUnderflowException : SystemException
     {
-  public QueueUnderflowException()
+  public QueueUnderflowException() : base()
 {
-    base();
 }
 
-public QueueUnderflowException(String message)
+public QueueUnderflowException(String message) :base(message)
 {
-    base(message);
 }
 }
 
