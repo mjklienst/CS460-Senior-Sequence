@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -59,7 +60,7 @@ namespace HomeworkThree
             IQueueInterface<string> words = new LinkedQueue<string>();
 
             // Read input file, tokenize by whitespace
-            string[] wordString = scanner.Split(' ');
+            string[] wordString = Regex.Split(scanner, @"\s+");
             foreach (string word in wordString)
             {
                 words.Push(word);
@@ -87,21 +88,16 @@ namespace HomeworkThree
         */
         private static int wrapSimply(IQueueInterface<String> words, int columnLength, String outputFilename)
         {
-            //System.IO.TextWriter writeFile = null;
-            StreamWriter sr = null;
-            //TextWriter writer;
+            //Writing into file, setting writeFile to null
+            System.IO.TextWriter writeFile = null;
+            //Testing for errors
             try
             {
-                //TextWriter writer = File.CreateText(outputFilename)
-                //writeFile = new StreamWriter(outputFilename);
-                sr = new StreamWriter(outputFilename);
-                // writeFile.Flush();
-                // writeFile.Close();
-                //writeFile = null;
+                writeFile = new StreamWriter(outputFilename);
             }
             catch (FileNotFoundException e)
             {
-                Console.WriteLine("Cannot create or open " + outputFilename +
+                Console.Write("Cannot create or open " + outputFilename +
                             " for writing.  Using standard output instead.");
             }
 
@@ -109,46 +105,45 @@ namespace HomeworkThree
             int spacesRemaining = 0;            // Running count of spaces left at the end of lines
             while (!words.IsEmpty())
             {
-                String str = words.Peek();
+                string str = words.Peek();
                 int len = str.Length;
                 // See if we need to wrap to the next line
                 if (col == 1)
                 {
-                    sr.WriteLine(str);
+                    writeFile.Write(str);
                     col += len;
                     words.Pop();
                 }
                 else if ((col + len) >= columnLength)
                 {
-				// go to the next line
-				sr.WriteLine(Environment.NewLine);
+                    // go to the next line
+                    writeFile.Write(Environment.NewLine);
                     spacesRemaining += (columnLength - col) + 1;
                     col = 1;
                 }
                 else
-                {	// Typical case of printing the next word on the same line
-				sr.WriteLine(" ");
-				sr.WriteLine(str);
+                {   // Typical case of printing the next word on the same line
+                    writeFile.Write(" ");
+                    writeFile.Write(str);
                     col += (len + 1);
                     words.Pop();
                 }
 
             }
-		sr.WriteLine(Environment.NewLine);
-		sr.Flush();
-		sr.Close();
+            writeFile.Write(Environment.NewLine);
+            writeFile.Flush();
+            writeFile.Close();
             return spacesRemaining;
         } // end wrapSimply
     }
-    }
-
+}
 
 /**
  * Text wrapper (from CS 345 Lab 3)
  */
 
-    /**
-	 *  The main program. 
-	 *
-	 *@param  args  The command line arguments, see usage notes
-	 */
+/**
+ *  The main program. 
+ *
+ *@param  args  The command line arguments, see usage notes
+ */
