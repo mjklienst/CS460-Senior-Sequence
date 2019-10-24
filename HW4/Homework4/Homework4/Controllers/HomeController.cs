@@ -13,14 +13,14 @@ namespace Homework4.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult RGB_Color()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Color_Interpolator()
         {
             ViewBag.Message = "Your contact page.";
 
