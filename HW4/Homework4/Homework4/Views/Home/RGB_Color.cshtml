@@ -1,7 +1,30 @@
 ﻿@{
-    ViewBag.Title = "RBG Color";
+    ViewBag.Title = "Enter an RGB Color to see what it looks like!";
 }
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 <h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+@using (Html.BeginForm())
+{
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            @Html.Label("R", "R")
+            @Html.TextBox("R", null, new { @class = "form-control", type = "number", min = "0", max = "255" })
+            @Html.Label("G", "G")
+            @Html.TextBox("G", null, new { @class = "form-control", type = "number", min = "0", max = "255" })
+            @Html.Label("B", "B")
+            @Html.TextBox("B", null, new { @class = "form-control", type = "number", min = "0", max = "255" })
+            <button type="submit" class="btn btn-primary">Display</button>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col" style="@ViewBag.Color"></div>
+            <div class="w-100"></div>
+            <div class="col"> <p> @ViewBag.Hex </p> </div>
+        </div>
+    </div>
+</div>
+}

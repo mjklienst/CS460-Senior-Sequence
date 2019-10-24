@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Drawing;
 
 namespace Homework4.Controllers
 {
@@ -13,11 +14,30 @@ namespace Homework4.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult RGB_Color()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Placeholder for RGB values";
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult RGB_Color(int R, int G, int B)
+        {
+            Color color = Color.FromArgb(0, R, G, B); //Setting alpha to 0, rest to R,G,B values
+            string hex = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"); //Converting to hex
+            if (ModelState.IsValid)
+            {
+                ViewBag.Message = color;
+                ViewBag.Hex = hex;
+                ViewBag.Color = "width: 150px; height: 150px; border: 1px solid; background-color: #" + hex + "; ";
+                return View();
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult Color_Interpolator()
