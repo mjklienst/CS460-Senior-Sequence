@@ -17,8 +17,6 @@ namespace Homework4.Controllers
         [HttpGet]
         public ActionResult RGB_Color()
         {
-            ViewBag.Message = "Placeholder for RGB values";
-
             return View();
         }
 
@@ -29,8 +27,7 @@ namespace Homework4.Controllers
             string hex = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"); //Converting to hex
             if (ModelState.IsValid)
             {
-                ViewBag.Message = color;
-                ViewBag.Hex = hex;
+                ViewBag.Hex = "#" + hex;
                 ViewBag.Color = "width: 150px; height: 150px; border: 1px solid; background-color: #" + hex + "; ";
                 return View();
             }
