@@ -23,7 +23,7 @@ namespace Homework4.Controllers
         [HttpPost]
         public ActionResult RGB_Color(int R, int G, int B)
         {
-            Color color = Color.FromArgb(255, R, G, B); //Setting alpha to 0, rest to R,G,B values
+            Color color = Color.FromArgb(255, R, G, B); //Setting alpha to 255, rest to R,G,B values
             string hex = color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"); //Converting to hex
             if (ModelState.IsValid)
             {
