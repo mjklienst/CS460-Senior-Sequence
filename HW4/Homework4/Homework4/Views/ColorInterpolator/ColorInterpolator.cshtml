@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "ColorInterpolator";
+}
+
+<h2>Interpolate from one color to another</h2>
+<p>Please enter colors in HTML hexadecimal format: #AABBCC</p>
+
+@using (Html.BeginForm())
+{
+
+    //Creating textbox form for input
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.Label("First", "First Color")
+                @Html.TextBox("First", null, htmlAttributes: new { @class = "form-control", placeholder = "#000000", required = "required", pattern = "#[0-9a-fA-F]{6}" })
+                @Html.Label("Second", "Second Color")
+                @Html.TextBox("Second", null, htmlAttributes: new { @class = "form-control", placeholder = "#000000", required = "required", pattern = "#[0-9a-fA-F]{6}" })
+                @Html.Label("Num", "Number of Colors")
+                @Html.TextBox("Num", null, new { @class = "form-control", type = "number", min = "0" })
+                <button type="submit" class="btn btn-primary">Generate Colors</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col"></div>
+                <div class="w-100">
+                    @if (ViewBag.toggle == 1) //If post is successful, continue
+                    {
+                    <table>
+                        <tr>
+                            <td><b>HTML</b></td>
+                            <td><b>Color</b></td>
+                        </tr>
+                        @foreach (var item in (IEnumerable<Homework4.Controllers.ColorInterpolatorController.colorStruct>)ViewBag.List)
+                        {
+                            <tr>
+                                <td>@item.hexValue</td>
+                                <td style="width: 100px; height: 10px; solid; background-color: @item.hexValue;"></td>
+                            </tr>
+                        }
+                    </table>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
