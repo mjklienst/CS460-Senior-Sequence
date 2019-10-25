@@ -5,7 +5,7 @@
 <div class="jumbotron">
     <h1>CS 460 Homework 4</h1>
     <p class="lead">A couple forms and some simple server-side logic -- learning the basics of GET, POST, query strings, form data and handling it all from an ASP.NET MVC 5 application.</p>
-    <p><a href="http://localhost:53358/" class="btn btn-primary btn-lg">The Assignment &raquo;</a></p>
+    <p><a class="btn btn-primary" @Html.ActionLink("The Assignment", "Index", "Home")</a></p>
 </div>
 
 <div class="row">
@@ -14,11 +14,11 @@
         <p>
             Want to know what a particular RGB color looks like? How about it's web color format? Here you go. Uses query strings to send form data to the server, which reads them in the Request object. It then performs the calculation and formats the result in a view to return to you.
         </p>
-        <p><a class="btn btn-default" href="http://localhost:53358/Home/RGB_Color">Try it out &raquo;</a></p>
+        <p><a class="btn btn-primary" @Html.ActionLink("Try it out", "RGB_Color", "Home")</a></p>
     </div>
     <div class="col-md-6">
         <h2>Color Interpolation</h2>
         <p>Typical online color choosers are way too useful. We wanted something fun and completely useless. This form POST's the data to the server and uses parameter binding to make it easy.</p>
-        <p><a class="btn btn-default" href="http://localhost:53358/Home/Color_Interpolator">Check it out &raquo;</a></p>
+        <p><a class="btn btn-primary" @Html.ActionLink("Check it out", "ColorInterpolator", "ColorInterpolator")</a></p>
     </div>
 </div>
