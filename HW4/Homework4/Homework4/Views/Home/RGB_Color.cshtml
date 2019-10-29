@@ -2,29 +2,37 @@
     ViewBag.Title = "Enter an RGB Color to see what it looks like!";
 }
 <h2>@ViewBag.Title</h2>
-<h3>@ViewBag.Message</h3>
 
-@using (Html.BeginForm())
-{
-
-<div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-            @Html.Label("R", "R")
-            @Html.TextBox("R", null, new { @class = "form-control", type = "number", min = "0", max = "255" })
-            @Html.Label("G", "G")
-            @Html.TextBox("G", null, new { @class = "form-control", type = "number", min = "0", max = "255" })
-            @Html.Label("B", "B")
-            @Html.TextBox("B", null, new { @class = "form-control", type = "number", min = "0", max = "255" })
-            <button type="submit" class="btn btn-primary">Display</button>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="row">
-            <div class="col" style="@ViewBag.Color"></div>
-            <div class="w-100"></div>
-            <div class="col"> <p> @ViewBag.Hex </p> </div>
-        </div>
-    </div>
-</div>
+@{ 
+    //Getting Query String vals
+    int RHex = Convert.ToInt32(Request["R"]);
+    int GHex = Convert.ToInt32(Request["G"]);
+    int BHex = Convert.ToInt32(Request["B"]);
+    //Converting to hex
+    string hex = "#" + RHex.ToString("X2") + GHex.ToString("X2") + BHex.ToString("X2");
 }
+
+
+    <div class="row">
+        <div class="col-md-6">
+            @using (Html.BeginForm("RGB_Color", "Home", FormMethod.Get))
+            {
+            <div class="form-group">
+                @Html.Label("R", "R")
+                @Html.TextBox("R", Request["R"], new { @class = "form-control", type = "number", min = "0", max = "255" })
+                @Html.Label("G", "G")
+                @Html.TextBox("G", Request["G"], new { @class = "form-control", type = "number", min = "0", max = "255" })
+                @Html.Label("B", "B")
+                @Html.TextBox("B", Request["B"], new { @class = "form-control", type = "number", min = "0", max = "255" })
+                <button type="submit" class="btn btn-primary">Display</button>
+            </div>
+            }
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col" style="width: 150px; height: 150px; border: 1px solid; background-color: rgb(@RHex, @GHex, @BHex)"></div>
+                <div class="w-100"></div>
+                <div class="col"> <p> @hex </p> </div>
+            </div>
+        </div>
+    </div>
