@@ -17,9 +17,9 @@ namespace Homework5_2.Controllers
 
         private IList<SelectListItem> PriorityList = new List<SelectListItem>
         {
-            new SelectListItem { Value = "high", Text = "High" },
-            new SelectListItem { Value = "medium", Text = "Medium" },
-            new SelectListItem { Value = "low", Text = "Low" }
+            new SelectListItem { Value = "High", Text = "High" },
+            new SelectListItem { Value = "Medium", Text = "Medium" },
+            new SelectListItem { Value = "Low", Text = "Low" }
         };
 
         // GET: Homework

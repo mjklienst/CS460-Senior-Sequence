@@ -25,7 +25,9 @@ namespace Homework5_2.Models
         public DateTime DueDate { get; set; }
 
         //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
-        [Required, Display(Name = "Due Time: ")]
+ 
+
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
         public TimeSpan DueTime { get; set; }
 
         [Required, Display(Name = "Department: ")]
@@ -36,6 +38,9 @@ namespace Homework5_2.Models
         public int CourseNum { get; set; }
 
         [Required, Display(Name = "Priority: ")]
-        public IEnumerable<System.Web.Mvc.SelectListItem> Priority { get; set; }
+        public string Priority { get; set; }
+        public IEnumerable<System.Web.Mvc.SelectListItem> PriorityList { get; set; }
+
+       
     }
 }

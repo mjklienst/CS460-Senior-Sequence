@@ -5,7 +5,7 @@
     [Notes]    NVARCHAR(128)        NOT NULL,
     [DueDate]        DATE            NOT NULL,
 	[DueTime]        TIME            NOT NULL,
-    [Department] NVARCHAR(3)        NOT NULL,
+    [Department] NCHAR(3)        NOT NULL,
 	[CourseNum] INT        NOT NULL,
 	[Priority] NVARCHAR(10)        NOT NULL,
 
