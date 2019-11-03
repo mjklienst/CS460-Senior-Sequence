@@ -19,15 +19,17 @@ namespace Homework5_2.Models
         [StringLength(128)]
         public string Notes { get; set; }
 
-        [Required, Display(Name = "Due Date: ")]
+        [Required(ErrorMessage = "Enter Due Date"), Display(Name = "Due Date")]
+        [DataType(DataType.DateTime)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        [Column(TypeName = "date")]
+        //[Column(TypeName = "date")]
         public DateTime DueDate { get; set; }
 
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
- 
 
-        [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
+        [Required(ErrorMessage = "Enter Due Time"), Display(Name = "Due Time")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true)]
+        //[DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
         public TimeSpan DueTime { get; set; }
 
         [Required, Display(Name = "Department: ")]
