@@ -29,7 +29,7 @@ namespace Homework5_2.Models
         [Required(ErrorMessage = "Enter Due Time"), Display(Name = "Due Time")]
         [DataType(DataType.Time)]
         [DisplayFormat(ApplyFormatInEditMode = true)]
-        // [DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
+        //[DisplayFormat(DataFormatString = "{0:hh\\:mm}")]
         public TimeSpan DueTime { get; set; }
 
         [Required, Display(Name = "Department: ")]
