@@ -138,6 +138,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Down.sql" />
     <Content Include="App_Data\Homeworks.mdf" />
     <Content Include="App_Data\Homeworks_log.ldf">
       <DependentUpon>Homeworks.mdf</DependentUpon>
