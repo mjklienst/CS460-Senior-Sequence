@@ -43,7 +43,7 @@
         @Html.LabelFor(model => model.DueTime, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.DueTime, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DueTime, "", new { @class = "text-danger", type="time" })
+            @Html.ValidationMessageFor(model => model.DueTime, "", new { @class = "text-danger", type="date" })
         </div>
     </div>
 
