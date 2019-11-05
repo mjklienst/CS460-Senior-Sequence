@@ -11,6 +11,7 @@ namespace Homework5_2.DAL
     {
         public HomeworkContext() : base("name=Homeworks")
         {
+            Database.SetInitializer<HomeworkContext>(null);
         }
         public virtual DbSet<Homework> Homeworks { get; set; }
     }
