@@ -37,6 +37,7 @@ namespace Homework5_2.Models
         public string Department { get; set; }
 
         [Required, Display(Name = "Course Number: ")]
+        [RegularExpression("^[0-9]{3,3}$")]
         public int CourseNum { get; set; }
 
         [Required, Display(Name = "Priority: ")]
