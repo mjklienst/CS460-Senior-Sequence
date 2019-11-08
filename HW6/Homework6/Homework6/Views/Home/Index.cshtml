@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Homework6.Models.ViewModels.StockItemViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+
+    .button {
+        background-color: orangered;
+        color: white;
+        text-align: center;
+        border: none;
+        padding: 5px 10px;
+    }
+    .text-area {
+        font-size: 35px;
+        text-align: center;
+    }
+
+    input[type=text], select {
+        display: inline-block;
+    }
+
+</style>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="text-area">Stock Search</div>
+            <label for="searchString"></label>
+            @Html.TextBox("searchString", null, htmlAttributes: new { @class = "form-control", required = "required", placeholder = "Search by stock item name" })
+            <button class="button">Search</button>
+        </div>
+    </div>
+
+    @ViewBag.searchResult
+    <div class="row">
+        @if (ViewBag.toggle == 1)
+        {
+            <div class="col-md-4">
+                @foreach (var x in Model)
+                {
+                    <div class="container" style="border: ridge; border-width: 1px; border-color: lightslategrey">
+                        <div class="row" style="padding: 15px;">@Html.ActionLink(linkText: x.StockItemName, actionName: "About", controllerName: "Home", routeValues: new { itemMatch = x.StockItemName }, htmlAttributes: null)</div>
+                    </div>
+                    <br />
+                }
+
+            </div>
+        }
+    </div>
+
+}
