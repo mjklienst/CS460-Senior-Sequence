@@ -176,7 +176,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\wwipic.png" />
+    <Content Include="Content\placeholder.png" />
+    <Content Include="Content\wwi.jpg" />
+    <Content Include="Content\wwi.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Homework6.DAL;
 using Homework6.Models;
 using Homework6.Models.ViewModels;
+using System.Diagnostics;
 
 
 namespace Homework6.Controllers
@@ -46,17 +47,39 @@ namespace Homework6.Controllers
 
         }
 
+        [HttpPost]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult About(string itemMatch)
+        {
+            if (itemMatch == null || itemMatch == "")
+            {
+                return (RedirectToAction("Index"));
+            }
+
+            List<StockItemViewModel> result = db.StockItems.Select(p => new StockItemViewModel
+            {
+                StockItemName = p.StockItemName,
+                Size = p.Size,
+                RecommendedRetailPrice = p.RecommendedRetailPrice,
+                TypicalWeightPerUnit = p.TypicalWeightPerUnit,
+                LeadTimeDays = p.LeadTimeDays,
+                ValidFrom = p.ValidFrom,
+                CustomFields = p.CustomFields,
+                Tags = p.Tags,
+                Photo = p.Photo
+            }).Where(sn => sn.StockItemName.Contains(itemMatch)).ToList();
+
+            return View(result);
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

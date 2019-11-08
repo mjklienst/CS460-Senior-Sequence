@@ -1,10 +1,14 @@
 ﻿<style>
     .topBorder {
-        text-align: center;
         border-style: ridge;
         border-color: dimgrey;
         background-color: dimgrey;
     }
+
+    .wText {
+        color: white;
+    }
+
 </style>
 
 <!DOCTYPE html>
@@ -20,7 +24,7 @@
 
     <div class="container-fluid center-block">
         <div class="topBorder" >
-            <h1 style="color: white"><img src="../Pictures/wwipic.jpg" alt="logohere " width="50" height="50" />World Wide Importers</h1>
+            <h1 class ="wText"><img src="~/Content/wwi.png" alt="logohere " width="100" height="100" /> <emsp></emsp> World Wide Importers</h1>
         </div>
     </div>
 
@@ -28,7 +32,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - World Wide Importers </p>
         </footer>
     </div>
 
