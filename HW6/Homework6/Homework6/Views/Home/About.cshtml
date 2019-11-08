@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Homework6.Models.ViewModels.StockItemViewModel>
+
+    <style>
+        .tableStyle {
+            border-style: ridge;
+            border-color: grey;
+            background-color: lightgray;
+            padding-bottom: 10px;
+        }
+
+        .StockInfo {
+            font-size: 35px;
+        }
+    </style>
+
+<br />
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-7 tableStyle">
+                <h4 class="StockInfo"> Stock Item </h4>
+                <hr />
+                <div class="row">
+                    <div class="col-md-4">
+                        Name: <br /> Size: <br /> Price: <br /> Weight: <br /> Lead Time: <br /> Valid Since: <br /> Origin: <br /> Tags: <br />
+                    </div>
+                    <div class="col-md-4" style="width:450px">
+                        @Html.DisplayFor(modelItem => item.StockItemName)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Size)
+                        <br />
+                        @{<text>$</text>}
+                        @Html.DisplayFor(modelItem => item.RecommendedRetailPrice)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.TypicalWeightPerUnit)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.LeadTimeDays)
+                        @{<text> days</text>}
+                        <br />
+                        @item.ValidFrom.Date.ToString("MM/yyyy")
+                        <br />
+                        @{string input = item.CustomFields.ToString().Substring(25, 10);}
+                        @{string output = input.Substring(input.IndexOf("\"") + 1, input.IndexOf(",") - 3);}
+                        @output
+                        <br />
+                        @{string input2 = item.Tags; }
+                        @{string output2 = input2; }
+                        @{var charsToRemove = new string[] { "[", "\"", ",", "]" };
+                            foreach (var c in charsToRemove)
+                            {
+                                output2 = output2.Replace(c, " ");
+                            }
+                        }
+                        @output2
+                        <br />
+                        @Html.DisplayFor(modelItem => item.Photo)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5"> <img src="~/Content/placeholder.png" alt="Pic" width="260" height="260" /></div>
+        }
+    </div>
+
+</div>
