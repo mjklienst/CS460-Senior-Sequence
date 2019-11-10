@@ -77,20 +77,16 @@ namespace Homework6.Controllers
                 Photo = p.Photo
             }).Where(sn => sn.StockItemName.Contains(itemMatch)).ToList();
 
-            //Table for supplier
+            //Table for supplier, starting feature 2 branch
             var SupplierInformation = db.StockItems
                         .Where(p => p.StockItemName == itemMatch)
                         .Select(p => p.Supplier).ToList();
-            /*
-            string SupplyID = db.StockItems.Where(p => p.StockItemName == itemMatch)
-                        .Include("SupplierID")
-                        .Select(p => p.SupplierID).ToString();
-            int Suppl = Int32.Parse(SupplyID);
-            */
+
+            //Whole list of everything
             List<StockItemViewModel> Customers = new List<StockItemViewModel>
                 {
                     new StockItemViewModel{
-                    ///Whole list of everything
+                    //StockItem details
                     StockItemName = result.First().StockItemName,
                     Size = result.First().Size,
                     RecommendedRetailPrice = result.First().RecommendedRetailPrice,
@@ -99,26 +95,27 @@ namespace Homework6.Controllers
                     ValidFrom = result.First().ValidFrom,
                     CustomFields = result.First().CustomFields,
                     Tags = result.First().Tags,
-                    ///Supplier details
+
+                    //Supplier details
                     SupplierName = SupplierInformation.First().SupplierName,
                     PhoneNumber = SupplierInformation.First().PhoneNumber,
                     FaxNumber = SupplierInformation.First().FaxNumber,
                     WebsiteURL = SupplierInformation.First().WebsiteURL,
                     SupplierID = SupplierInformation.First().SupplierID,
-                    //FullName = db.People.Where(p => p.PersonID == Suppl).Select(y => y.FullName).ToString(),
-                    //FullName = db.People.Join(db.Suppliers, x => x.PersonID, y => y.SupplierID, (x, y) => x).Where(p=>p.PersonID == 7).Select(p=>p.FullName).ToString(),
+                    FullName = SupplierInformation.Where(x=>x.SupplierID == SupplierInformation.First().SupplierID)
+                                    .Select(x => x.Person2)
+                                    .Select(x => x.FullName).First(),
                     
                     //Purchase history information              
-
-                    Orders = db.StockItems.Where(person => person.StockItemName.Contains("Plush shark slippers (Gray) XL"))
+                    Orders = db.StockItems.Where(y => y.StockItemName.Contains(itemMatch))
                                    .SelectMany(x => x.InvoiceLines)
                                    .Count(),
 
-                    GrossSales = db.StockItems.Where(person => person.StockItemName.Contains("Plush shark slippers (Gray) XL"))
+                    GrossSales = db.StockItems.Where(y => y.StockItemName.Contains(itemMatch))
                                    .SelectMany(x => x.InvoiceLines)
                                    .Sum(x => x.ExtendedPrice),
 
-                    GrossProfit = db.StockItems.Where(person => person.StockItemName.Contains("Plush shark slippers (Gray) XL"))
+                    GrossProfit = db.StockItems.Where(y => y.StockItemName.Contains(itemMatch))
                                    .SelectMany(x => x.InvoiceLines)
                                    .Sum(x => x.LineProfit),
  }
