@@ -83,24 +83,24 @@ namespace Homework6.Controllers
                         .Select(p => p.Supplier).ToList();
 
             //Info for the table
-            var topCustomers = db.StockItems.Where(person => person.StockItemName.Contains(itemMatch))
-                .Select(x => x.Person)
-                            .SelectMany(x => x.Customers1)
-                            .GroupBy(x => x.CustomerID)
-                            .OrderByDescending(x => x.SelectMany(p => p.Orders).SelectMany(y => y.OrderLines).Sum(l => l.Quantity))
-                            .Take(10)
-                            .Select(x => x.FirstOrDefault().CustomerName)
-                            .ToList();
+            var topCustomers = db.InvoiceLines
+                .Where(x => x.StockItem.StockItemName.Contains(itemMatch))
+                .Select(x => x.Invoice.Customer)
+                .GroupBy(x => x.CustomerID)
+                .OrderByDescending(x => x.Sum(y => y.Invoices.FirstOrDefault().InvoiceLines.FirstOrDefault().Quantity))
+                .Take(10)
+                .Select(x => x.FirstOrDefault().CustomerName)
+                .ToList();
 
             //Info for the table
-            var topQuantity = db.StockItems.Where(person => person.StockItemName.Contains(itemMatch))
-                .Select(x => x.Person)
-                            .SelectMany(x => x.Customers1)
-                            .GroupBy(x => x.CustomerID)
-                            .OrderByDescending(x => x.SelectMany(p => p.Orders).SelectMany(y => y.OrderLines).Sum(l => l.Quantity))
-                            .Take(10)
-                            .Select(x => x.SelectMany(p => p.Orders).SelectMany(y => y.OrderLines).Sum(l => l.Quantity))
-                            .ToList();
+            var topQuantity = db.InvoiceLines
+                .Where(x => x.StockItem.StockItemName.Contains(itemMatch))
+                .Select(x => x.Invoice.Customer)
+                .GroupBy(x => x.CustomerID)
+                .OrderByDescending(x => x.Sum(y => y.Invoices.FirstOrDefault().InvoiceLines.FirstOrDefault().Quantity))
+                .Take(10)
+                .Select(x => x.Sum(p => p.Invoices.SelectMany(y => y.InvoiceLines).FirstOrDefault().Quantity))
+                .ToList();
 
             //Creating new PurchaseList
             List<PurchaseList> TopPurchasers = new List<PurchaseList>();
