@@ -82,6 +82,39 @@ namespace Homework6.Controllers
                         .Where(p => p.StockItemName == itemMatch)
                         .Select(p => p.Supplier).ToList();
 
+            //Info for the table
+            var topCustomers = db.StockItems.Where(person => person.StockItemName.Contains(itemMatch))
+                .Select(x => x.Person)
+                            .SelectMany(x => x.Customers1)
+                            .GroupBy(x => x.CustomerID)
+                            .OrderByDescending(x => x.SelectMany(p => p.Orders).SelectMany(y => y.OrderLines).Sum(l => l.Quantity))
+                            .Take(10)
+                            .Select(x => x.FirstOrDefault().CustomerName)
+                            .ToList();
+
+            //Info for the table
+            var topQuantity = db.StockItems.Where(person => person.StockItemName.Contains(itemMatch))
+                .Select(x => x.Person)
+                            .SelectMany(x => x.Customers1)
+                            .GroupBy(x => x.CustomerID)
+                            .OrderByDescending(x => x.SelectMany(p => p.Orders).SelectMany(y => y.OrderLines).Sum(l => l.Quantity))
+                            .Take(10)
+                            .Select(x => x.SelectMany(p => p.Orders).SelectMany(y => y.OrderLines).Sum(l => l.Quantity))
+                            .ToList();
+
+            //Creating new PurchaseList
+            List<PurchaseList> TopPurchasers = new List<PurchaseList>();
+
+            //Populating PurchaseList with queries above
+            for (int i = 0; i < 10; i++)
+            {
+                TopPurchasers.Add(new PurchaseList
+                {
+                    CustomerName = topCustomers.ElementAt(i),
+                    Quantity = topQuantity.ElementAt(i)
+                });
+            }
+
             //Whole list of everything
             List<StockItemViewModel> Customers = new List<StockItemViewModel>
                 {
@@ -106,7 +139,7 @@ namespace Homework6.Controllers
                                     .Select(x => x.Person2)
                                     .Select(x => x.FullName).First(),
                     
-                    //Purchase history information              
+                    //Sales history information              
                     Orders = db.StockItems.Where(y => y.StockItemName.Contains(itemMatch))
                                    .SelectMany(x => x.InvoiceLines)
                                    .Count(),
@@ -118,6 +151,9 @@ namespace Homework6.Controllers
                     GrossProfit = db.StockItems.Where(y => y.StockItemName.Contains(itemMatch))
                                    .SelectMany(x => x.InvoiceLines)
                                    .Sum(x => x.LineProfit),
+
+                    //List for top purchasers
+                    ListOfPurchases = TopPurchasers
  }
                 };
 

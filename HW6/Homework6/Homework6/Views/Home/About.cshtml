@@ -126,5 +126,41 @@
     </div>
     <br />
 
+    <br />
+    <div class="row">
+
+        <div class="col-md-7 tableStyle">
+            <h4 class="StockInfo"> Top Purchasers </h4> <p style="color:gray"> (10 Highest by Quantity Ordered) </p>
+            <hr />
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ListOfPurchases.FirstOrDefault().CustomerName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ListOfPurchases.FirstOrDefault().Quantity)
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model.FirstOrDefault().ListOfPurchases)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustomerName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
 </div>
 

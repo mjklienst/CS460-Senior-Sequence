@@ -9,6 +9,12 @@ using Homework6.DAL;
 
 namespace Homework6.Models.ViewModels
 {
+    public class PurchaseList
+    {
+        //For the purchase list
+        public string CustomerName { get; set; }
+        public int Quantity { get; set; }
+    }
     public class StockItemViewModel
     {
         //For the StockItem table
@@ -40,6 +46,10 @@ namespace Homework6.Models.ViewModels
         public double Orders { get; set; }
         public decimal GrossSales { get; set; }
         public decimal GrossProfit { get; set; }
+
+        //For the purchase list
+        public List<PurchaseList> ListOfPurchases { get; set; }
+
 
     }
 
