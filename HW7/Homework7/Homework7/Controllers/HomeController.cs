@@ -42,8 +42,9 @@ namespace Homework7.Controllers
 
         public ActionResult user()
         {
+            string apiKey = System.Web.Configuration.WebConfigurationManager.AppSettings["KeyAPI"];
             string uri = "https://api.github.com/user";
-            string credentials = "b4fae31cb864ea3cd22ad9b5eeba15e97275afdf";
+            string credentials = apiKey;
             string username = "mjklienst";
             string json = SendRequest(uri, credentials, username);
             JObject gitStuff = JObject.Parse(json);
