@@ -5,40 +5,142 @@
 <style>
     #tableDetails {
         border-style: groove;
-        background-color: darkslategray;
+        background-image: url("/Content/tree.jpg");
+        background-position: 100%;
     }
+
     #name {
         margin-left: 40px;
-        color: springgreen;
+        color: black;
+          margin: 30px;
+                  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
     }
+
     #userStuff {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 20px;
-        color: white;
+        color: black;
+        text-align: center;
         list-style-type: none;
+          margin: 30px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+    }
+
+    .prettyBox {
+        border-style: groove;
+        background-color: orangered;
+        padding-left: 15px;
+        padding-right: 10px;
+        padding-bottom: 5px;
+        color: white;
+    }
+
+    .col-md-2 {
+    margin: 20px;
+}
+    body {
+        background-color: lightblue;
     }
 
 </style>
 
-        <div class="container" id="tableDetails">
+<div class="container" id="tableDetails">
+    <div class="row">
+        <div class="col-md-3" id="pic">
+        </div>
+        <div class="col-md-9">
+            <h1 id="name"></h1>
+            <div>
+                <ul id="userStuff">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<div class="container">
+    <!-- First Row -->
+    <div class="row">
+        <!-- This will make a box filled with the information -->
+        <div class="col-md-20">
+
+            <!-- Displays the person information -->
+            <h4 class="tableInfo">  </h4>
             <div class="row">
-                <div class="col-md-3" id="pic"> 
+                <div class="col-md-2 prettyBox">
+                    <div id="repoName1"></div>
+                    <br />
+                    <div id="repoOwner1"><input type="image" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
+                    <br />
+                    <div id="lastUpdated1"></div>
+                    <br />
+                    <div id="pic"></div>
+                    <br />
+                    <div id="button"></div>
                 </div>
-                <div class="col-md-9">
-                    <h1 id="name"></h1>
-                    <div>
-                        <ul id="userStuff">
-                        </ul>
-                    </div>
+                <div class="col-md-2 prettyBox">
+                    <div id="repoName2"></div>
+                    <br />
+                    <div id="repoOwner2"><input type="image" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
+                    <br />
+                    <div id="lastUpdated2"></div>
+                    <br />
+                    <div id="pic"></div>
+                    <br />
+                    <div id="button"></div>
+                </div>
+                <div class="col-md-2 prettyBox">
+                    <div id="repoName3"></div>
+                    <br />
+                    <div id="repoOwner3"><input type="image" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
+                    <br />
+                    <div id="lastUpdated3"></div>
+                    <br />
+                    <div id="pic"></div>
+                    <br />
+                    <div id="button"></div>
+                </div>
+                <div class="col-md-2 prettyBox">
+                    <div id="repoName4"></div>
+                    <br />
+                    <div id="repoOwner4"><input type="image" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
+                    <br />
+                    <div id="lastUpdated4"></div>
+                    <br />
+                    <div id="pic"></div>
+                    <br />
+                    <div id="button"></div>
+                </div>
+                <div class="col-md-2 prettyBox">
+                    <div id="repoName5"></div>
+                    <br />
+                    <div id="repoOwner5"><input type="image" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
+                    <br />
+                    <div id="lastUpdated5"></div>
+                    <br />
+                    <div id="pic"></div>
+                    <br />
+                    <div id="button"></div>
                 </div>
             </div>
-            </div>
+        </div>
+    </div>
+</div>
 
-            <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<br /><br />
+<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 
 
 
-        @section scripts {
-            <script type="text/javascript" src="~/Scripts/main.js"></script>
-            <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        }
+@section scripts {
+    <script type="text/javascript" src="~/Scripts/main.js"></script>
+    <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+}

@@ -15,6 +15,47 @@ namespace Homework7.Controllers
     public class HomeController : Controller
     {
 
+        public class RepoData
+        {
+            public string Name { get; set; }
+            public string FullName { get; set; }
+            public string OwnerLogin { get; set; }
+            public string HtmlUrl { get; set; }
+            public string OwnerAvatarUrl { get; set; }
+            public string UpdatedAt { get; set; }
+
+        }     //need name, full_name, [owner][login], html_url, [owner][avatar_url], updated_at, 
+
+        public class CommitModel
+        {
+            public string Sha { get; set; }
+            public string Committer { get; set; }
+            public string WhenCommitted { get; set; }
+            public string CommitMessage { get; set; }
+            public string HtmlUrl { get; set; }
+
+
+        }
+
+        public ActionResult ApiMethod(string userName, string repoName)
+        {
+            //username will be mjklienst or whatev and repoName be testing123 or watev and then
+            //put thatinto a string for uri to send off and then sendRequest() on that!  
+            // Do what is needed to obtain a C# object containing data you wish to convert to JSON
+            List<CommitModel> commits = new List<CommitModel>();
+            //sha committer whencommitted commitmessage htmlurl
+
+            //IEnumerable<CommitModel> commits = new IEnumerable<CommitModel>;
+
+            return new ContentResult
+            {
+                // serialize C# object "commits" to JSON using Newtonsoft.Json.JsonConvert
+                Content = JsonConvert.SerializeObject(commits),
+                ContentType = "application/json",
+                ContentEncoding = System.Text.Encoding.UTF8
+            };
+        }
+
         private string SendRequest(string uri, string credentials, string username)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
@@ -73,17 +114,6 @@ namespace Homework7.Controllers
                 ContentType = "application/json",
                 ContentEncoding = System.Text.Encoding.UTF8
             };
-
-
-            //need name, full_name, [owner][login], html_url, [owner][avatar_url], updated_at, 
-
-            /*String jsonString = JsonConvert.SerializeObject(output, Formatting.Indented);
-            return new ContentResult
-            {
-                Content = jsonString,
-                ContentType = “application / json”, //you can return whatever you want here like images, etc
-                ContentEncoding = system.text.encoding.UTF8
-            }*/
         }
 
         public ActionResult repositories()
@@ -99,8 +129,7 @@ namespace Homework7.Controllers
 
             // int count = (int)gitStuff["Total"];
             //{{name,fullname,html},{name,fullname,html},{name,full,html},{}}
-            //need output[i].add individual stuff?
-            List<string> output = new List<string>();
+            List<RepoData> x = new List<RepoData>();
             for (int i = 0; i < length; i++)
             {
                 string name = (string)gitStuff[i]["name"];
@@ -109,17 +138,13 @@ namespace Homework7.Controllers
                 string htmlURL = (string)gitStuff[i]["html_url"];
                 string ownerAvatarURL = (string)gitStuff[i]["owner"]["avatar_url"];
                 string updatedAt = (string)gitStuff[i]["updated_at"];
-                output.Add($"{name}");
-                output.Add($"{fullName}");
-                output.Add($"{ownerLogin}");
-                output.Add($"{htmlURL}");
-                output.Add($"{ownerAvatarURL}");
-                output.Add($"{updatedAt}");
+                x.Add(new RepoData() { Name = name, FullName = fullName, OwnerLogin = ownerLogin, HtmlUrl = htmlURL, OwnerAvatarUrl = ownerAvatarURL, UpdatedAt = updatedAt });
             }
 
-       //     Debug.WriteLine($"{length},{output}");
+                 Debug.WriteLine($"{length},{x}");
+                 Debug.WriteLine(x.Count);
 
-            string jsonString = JsonConvert.SerializeObject(output, Formatting.Indented);
+            string jsonString = JsonConvert.SerializeObject(x, Formatting.Indented);
             return new ContentResult
             {
 
