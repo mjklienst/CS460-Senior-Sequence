@@ -8,6 +8,11 @@
         background-image: url("/Content/tree.jpg");
         background-position: 100%;
     }
+    table, td {
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+     }
 
     #name {
         margin-left: 40px;
@@ -56,7 +61,7 @@
         <div class="col-md-3" id="pic">
         </div>
         <div class="col-md-9">
-            <h1 id="name"></h1>
+            <h1> <a id="name"></a></h1>
             <div>
                 <ul id="userStuff">
                 </ul>
@@ -76,59 +81,49 @@
             <h4 class="tableInfo">  </h4>
             <div class="row">
                 <div class="col-md-2 prettyBox">
-                    <div id="repoName1"></div>
+                    <a id="repoName1"></a>            
                     <br />
-                    <div id="repoOwner1"><input type="image" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
+                    <div id="repoOwner1"><input type="image" onclick="myFunction('1')" id="1" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
                     <br />
                     <div id="lastUpdated1"></div>
                     <br />
-                    <div id="pic"></div>
-                    <br />
-                    <div id="button"></div>
+                    <div id="pic1"></div>
                 </div>
                 <div class="col-md-2 prettyBox">
-                    <div id="repoName2"></div>
+                    <a id="repoName2"></a>
                     <br />
-                    <div id="repoOwner2"><input type="image" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
+                    <div id="repoOwner2"><input type="image" onclick="myFunction('2')" id="2" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
                     <br />
                     <div id="lastUpdated2"></div>
                     <br />
-                    <div id="pic"></div>
-                    <br />
-                    <div id="button"></div>
+                    <div id="pic2"></div>
                 </div>
                 <div class="col-md-2 prettyBox">
-                    <div id="repoName3"></div>
+                    <a id="repoName3"></a>
                     <br />
-                    <div id="repoOwner3"><input type="image" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
+                    <div id="repoOwner3"><input type="image" onclick="myFunction('3')" id="3" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
                     <br />
                     <div id="lastUpdated3"></div>
                     <br />
-                    <div id="pic"></div>
-                    <br />
-                    <div id="button"></div>
+                    <div id="pic3"></div>
                 </div>
                 <div class="col-md-2 prettyBox">
-                    <div id="repoName4"></div>
+                    <a id="repoName4"></a>
                     <br />
-                    <div id="repoOwner4"><input type="image" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
+                    <div id="repoOwner4"><input type="image" onclick="myFunction('4')" id="4" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
                     <br />
                     <div id="lastUpdated4"></div>
                     <br />
-                    <div id="pic"></div>
-                    <br />
-                    <div id="button"></div>
+                    <div id="pic4"></div>
                 </div>
                 <div class="col-md-2 prettyBox">
-                    <div id="repoName5"></div>
+                    <a id="repoName5"></a>
                     <br />
-                    <div id="repoOwner5"><input type="image" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
+                    <div id="repoOwner5"><input type="image" onclick="myFunction('5')" id="5" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
                     <br />
                     <div id="lastUpdated5"></div>
                     <br />
-                    <div id="pic"></div>
-                    <br />
-                    <div id="button"></div>
+                    <div id="pic5"></div>
                 </div>
             </div>
         </div>
@@ -136,9 +131,9 @@
 </div>
 
 <br /><br />
-<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-
-
+<div id="bigTable">
+<table id="tablePlacement"></table>
+</div>
 
 @section scripts {
     <script type="text/javascript" src="~/Scripts/main.js"></script>

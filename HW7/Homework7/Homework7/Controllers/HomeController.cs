@@ -32,25 +32,48 @@ namespace Homework7.Controllers
             public string Committer { get; set; }
             public string WhenCommitted { get; set; }
             public string CommitMessage { get; set; }
-            public string HtmlUrl { get; set; }
-
 
         }
 
-        public ActionResult ApiMethod(string userName, string repoName)
+        public ActionResult commits(string userName, string repoName)
         {
+            Debug.WriteLine(userName);
+            Debug.WriteLine(repoName);
+            System.Diagnostics.Debug.WriteLine("User Name: "+userName);
+            System.Diagnostics.Debug.WriteLine("Repo Name: "+repoName);
+
+            string apiKey = System.Web.Configuration.WebConfigurationManager.AppSettings["KeyAPI"];
+            string newUrlName = "https://api.github.com/repos/" + userName + "/" + repoName + "/commits";
+            //string newUrlName = "https://api.github.com/repos/wou-cs/CS460-F19-mjklienst/commits";
+            System.Diagnostics.Debug.WriteLine("newUrlName: " + newUrlName);
+            string credentials = apiKey;
+            //string username = "wou-cs";
+            string username = userName;
+            string json = SendRequest(newUrlName, credentials, username);
+            JArray gitStuff = JArray.Parse(json);
+            int length = gitStuff.Count;
             //username will be mjklienst or whatev and repoName be testing123 or watev and then
             //put thatinto a string for uri to send off and then sendRequest() on that!  
             // Do what is needed to obtain a C# object containing data you wish to convert to JSON
-            List<CommitModel> commits = new List<CommitModel>();
+            List<CommitModel> commitList = new List<CommitModel>();
             //sha committer whencommitted commitmessage htmlurl
+
+            for (int i = 0; i < length; i++)
+            {
+                string sha = (string)gitStuff[i]["sha"];
+                string committer = (string)gitStuff[i]["commit"]["committer"]["name"];
+                string whenCommitted = (string)gitStuff[i]["commit"]["committer"]["date"];
+                string commitMessage = (string)gitStuff[i]["commit"]["message"];
+                commitList.Add(new CommitModel() { Sha = sha, Committer = committer, WhenCommitted = whenCommitted, CommitMessage = commitMessage});
+            }
+
 
             //IEnumerable<CommitModel> commits = new IEnumerable<CommitModel>;
 
             return new ContentResult
             {
                 // serialize C# object "commits" to JSON using Newtonsoft.Json.JsonConvert
-                Content = JsonConvert.SerializeObject(commits),
+                Content = JsonConvert.SerializeObject(commitList),
                 ContentType = "application/json",
                 ContentEncoding = System.Text.Encoding.UTF8
             };
@@ -62,7 +85,7 @@ namespace Homework7.Controllers
             request.Headers.Add("Authorization", "token " + credentials);
             request.UserAgent = username;       // Required, see: https://developer.github.com/v3/#user-agent-required
             request.Accept = "application/json";
-
+            System.Diagnostics.Debug.WriteLine("request: "+ request);
             string jsonString = null;
             // TODO: You should handle exceptions here
             using (WebResponse response = request.GetResponse())

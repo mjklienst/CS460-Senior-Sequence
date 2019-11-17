@@ -13,6 +13,13 @@ namespace Homework7
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute(
+               name: "GitCommitInfo",
+               url: "api/{action}/{id}",
+               defaults: new { controller = "Home", action = "commits?user={user}&repo={repo}", id = UrlParameter.Optional }
+           );
+
             routes.MapRoute(
                name: "GitUserInfo",
                url: "api/{action}/{id}",
