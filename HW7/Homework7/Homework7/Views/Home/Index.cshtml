@@ -5,24 +5,30 @@
 <style>
     #tableDetails {
         border-style: groove;
+        border-radius: 20px;
         background-image: url("/Content/tree.jpg");
         background-position: 100%;
     }
+
     table, td {
-    border: 1px solid black;
-    color: black;
-    background-color: white;
-     }
+        border: 1px solid black;
+        color: black;
+        background-color: white;
+    }
 
     #name {
         margin-left: 40px;
         color: black;
-          margin: 30px;
-                  text-align: center;
-  background-color: #ffffff;
-  border: 1px solid black;
-  opacity: 0.6;
-  filter: alpha(opacity=60);
+        margin: 30px;
+        text-align: center;
+        background-color: #ffffff;
+        border: 1px solid black;
+        opacity: 0.6;
+        filter: alpha(opacity=60);
+    }
+
+    .col-md-9 {
+        text-align: center;
     }
 
     #userStuff {
@@ -31,11 +37,11 @@
         color: black;
         text-align: center;
         list-style-type: none;
-          margin: 30px;
-  background-color: #ffffff;
-  border: 1px solid black;
-  opacity: 0.6;
-  filter: alpha(opacity=60);
+        margin: 30px;
+        background-color: #ffffff;
+        border: 1px solid black;
+        opacity: 0.6;
+        filter: alpha(opacity=60);
     }
 
     .prettyBox {
@@ -48,12 +54,38 @@
     }
 
     .col-md-2 {
-    margin: 20px;
-}
+        margin: 20px;
+    }
+
     body {
         background-color: lightblue;
     }
 
+
+    .prettyBox img {
+        height: 120px;
+        width: 120px;
+        border: solid;
+        border-color: black;
+        box-shadow: 0px 15px 15px 0px black;
+        margin-bottom: -16px;
+        margin-left: -26px;
+        border-radius: 10%;
+    }
+
+    img {
+        margin-left: -15px;
+        border-radius: 10px;
+    }
+
+    input {
+        margin-right: -33px;
+        margin-top: -30px;
+    }
+
+    a {
+        color: darkred;
+    }
 </style>
 
 <div class="container" id="tableDetails">
@@ -72,20 +104,15 @@
 
 <br />
 <div class="container">
-    <!-- First Row -->
     <div class="row">
-        <!-- This will make a box filled with the information -->
         <div class="col-md-20">
-
-            <!-- Displays the person information -->
             <h4 class="tableInfo">  </h4>
             <div class="row">
                 <div class="col-md-2 prettyBox">
-                    <a id="repoName1"></a>            
+                    <a id="repoName1"></a>
                     <br />
                     <div id="repoOwner1"><input type="image" onclick="myFunction('1')" id="1" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
-                    <br />
-                    <div id="lastUpdated1"></div>
+                    <div id="lastUpdated1"> Last Updated: <br /> </div>
                     <br />
                     <div id="pic1"></div>
                 </div>
@@ -93,8 +120,7 @@
                     <a id="repoName2"></a>
                     <br />
                     <div id="repoOwner2"><input type="image" onclick="myFunction('2')" id="2" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
-                    <br />
-                    <div id="lastUpdated2"></div>
+                    <div id="lastUpdated2"> Last Updated: <br /> </div>
                     <br />
                     <div id="pic2"></div>
                 </div>
@@ -102,8 +128,7 @@
                     <a id="repoName3"></a>
                     <br />
                     <div id="repoOwner3"><input type="image" onclick="myFunction('3')" id="3" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
-                    <br />
-                    <div id="lastUpdated3"></div>
+                    <div id="lastUpdated3"> Last Updated: <br /> </div>
                     <br />
                     <div id="pic3"></div>
                 </div>
@@ -111,8 +136,7 @@
                     <a id="repoName4"></a>
                     <br />
                     <div id="repoOwner4"><input type="image" onclick="myFunction('4')" id="4" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
-                    <br />
-                    <div id="lastUpdated4"></div>
+                    <div id="lastUpdated4"> Last Updated: <br /> </div>
                     <br />
                     <div id="pic4"></div>
                 </div>
@@ -120,8 +144,7 @@
                     <a id="repoName5"></a>
                     <br />
                     <div id="repoOwner5"><input type="image" onclick="myFunction('5')" id="5" src="~/Content/redarrow.png" alt="Submit" width="48" height="48" style="border-radius: 50%; float: right;"></div>
-                    <br />
-                    <div id="lastUpdated5"></div>
+                    <div id="lastUpdated5"> Last Updated: <br /> </div>
                     <br />
                     <div id="pic5"></div>
                 </div>
@@ -130,9 +153,10 @@
     </div>
 </div>
 
-<br /><br />
+<br />
+<br />
 <div id="bigTable">
-<table id="tablePlacement"></table>
+    <table id="tablePlacement"></table>
 </div>
 
 @section scripts {
