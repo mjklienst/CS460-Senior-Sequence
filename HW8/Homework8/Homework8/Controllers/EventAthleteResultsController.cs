@@ -43,7 +43,7 @@ namespace Homework8.Controllers
             {
                 db.EventAthleteResults.Add(eventAthleteResult);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
             ViewBag.AthleteID = new SelectList(db.Athletes, "AthleteID", "Name", eventAthleteResult.AthleteID);
