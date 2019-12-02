@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Homework8.Models.EventAthleteResult>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Athlete.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Event.Event1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Meet.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Athlete.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Event.Event1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Meet.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RaceTime)
+        </td>
+    </tr>
+}
+
+</table>
