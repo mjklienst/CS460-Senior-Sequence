@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Homework8.Models.ViewModels.DropDownViewModel>
+
+<h1 style="text-align:center; border:groove; border-width: 7px; border-radius: 20px;">Athlete Progess</h1>
+<h3>Select a team, athlete, and event to see how an athlete has done over time:</h3>
+
+<div id="teamList"></div>
+<br />
+<div id="athleteList"></div>
+<br />
+<div id="eventList"></div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div id="theplot"></div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/Scripts/main.js"></script>
+    <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+}

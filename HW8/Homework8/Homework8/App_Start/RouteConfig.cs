@@ -18,6 +18,19 @@ namespace Homework8
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "StudentResult", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "GraphInfo",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "GraphMath", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "TeamInfo",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "TeamInfo", id = UrlParameter.Optional }
+);
+
         }
     }
 }
