@@ -71,6 +71,8 @@ function teamData(data) {
 }
 
 function teamAthletes(data) {
+    document.getElementById("athleteList").remove();
+    $('#athleteListOutside').append($('<div id="athleteList"></div> '));
     var athCount = 0; //Counter for element id
     for (var i = 0; i < data.length; ++i) {
         $('#athleteList').append($('<button id="Athlete' + athCount + '" onclick="myFunction2(' + athCount + ')">' + data[i].AthleteName + '</button>'));
@@ -79,6 +81,8 @@ function teamAthletes(data) {
 }
 
 function events(data) {
+    document.getElementById("eventList").remove();
+    $('#eventListOutside').append($('<div id="eventList"></div> '));
     var eventCount = 0; //Counter for element id
     for (var i = 0; i < data.length; ++i) {
         $('#eventList').append($('<button id="Event' + eventCount + '" onclick="myFunction3(' + eventCount + ')">' + data[i].Event1 + '</button>'));
@@ -86,10 +90,21 @@ function events(data) {
     }
 }
 
+
 function plotGraph(data) {
+    //Getting all the MeetDate info
+    var dateArray = [];
+    for (var i = 0; i < data.length; ++i) {
+        dateArray[i] = data[i].MeetDate;
+    }
+    //Getting all the RaceTime info
+    var timeArray = [];
+    for (var i = 0; i < data.length; ++i) {
+        timeArray[i] = data[i].RaceTime;
+    }
     var trace = {
-        x: [data[0].MeetDate, data[1].MeetDate, data[2].MeetDate, data[3].MeetDate],
-        y: [data[0].RaceTime,data[1].RaceTime,data[2].RaceTime,data[3].RaceTime],
+        x: dateArray,
+        y: timeArray,
         mode: 'lines',
         type: 'scatter',
     };
