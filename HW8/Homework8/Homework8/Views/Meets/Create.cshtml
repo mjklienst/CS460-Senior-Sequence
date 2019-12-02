@@ -27,6 +27,7 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.MeetDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.MeetDate, "", new { @class = "text-danger" })
+                <p>Must be in form <b>yyyy/mm/dd</b></p>
             </div>
         </div>
 

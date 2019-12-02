@@ -22,6 +22,9 @@ namespace Homework8.Models
 
         [Required]
         [StringLength(20)]
+        [RegularExpression("^Girls$|^Boys$", ErrorMessage = "Please enter either 'Girls' or 'Boys' (case sensitive)")]
+
+
         public string Gender { get; set; }
 
         public int TeamID { get; set; }
