@@ -9,8 +9,10 @@ namespace Homework8.DAL
 
     public partial class hw8Context : DbContext
     {
-        public hw8Context()
-            : base("name=hw8Context")
+        //if you want to run locally, change base to "hw8Context", 
+        //else Azure publish: "hw8Context_Azure". These names are in Web.config
+        public hw8Context() 
+            : base("name=hw8Context_Azure")
         {
         }
 
